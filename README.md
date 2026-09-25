@@ -63,7 +63,17 @@ streamlit run app.py
 # 4. Chạy lại A/B evaluation và sinh báo cáo
 python -m src.calibrate_threshold
 python -m src.evaluate
+
+# 5. Bonus: BGE reranker vs RRF và conversation memory (cần extra local-embedding)
+python -m src.evaluate_bonus
 ```
+
+Bonus đã triển khai:
+
+- **BGE-M3 reranker** (`src/bge_reranking.py`): RRF lấy top-10 rồi chấm lại bằng cosine embedding `BAAI/bge-m3` (đa ngôn ngữ). Bật trong chatbot bằng `RERANKER=bge`.
+- **Conversation memory** (`src/conversation_memory.py`): viết lại câu follow-up thành câu hỏi độc lập (LLM khi dùng provider API, heuristic khi offline). Bật/tắt trong sidebar Streamlit.
+
+Kết quả đo của cả hai nằm ở mục *Bonus experiments* trong `group_project/evaluation/RESULT.md`.
 
 `src.evaluate` là evaluator offline, deterministic. Để chạy bốn metric bằng Ragas + Gemini (có phát sinh API calls), cài `.[evaluation,providers]`, cấu hình `GEMINI_API_KEY`, rồi chạy `python -m src.evaluate_ragas`.
 

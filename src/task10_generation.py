@@ -13,6 +13,7 @@ Nếu context không đủ hoặc provider lỗi, trả safe refusal; không b�
 
 import os
 import re
+import time
 import unicodedata
 
 from .task9_retrieval_pipeline import retrieve
@@ -123,18 +124,41 @@ def _extractive_answer(user_message: str) -> str:
     return " ".join(selected)
 
 
-def call_llm(system_prompt: str, user_message: str) -> str:
-    """Gọi OpenAI, Gemini hoặc Anthropic theo cấu hình."""
+RATE_LIMIT_RETRIES = 4
+RATE_LIMIT_BACKOFF_SECONDS = 15
+
+
+def call_llm(system_prompt: str, user_message: str, model: str | None = None) -> str:
+    """Gọi provider; retry có backoff khi bị rate limit theo phút (HTTP 429).
+
+    `model` ghi đè LLM_MODEL (cùng provider). Hết quota theo ngày thì raise ngay.
+    """
+    for attempt in range(RATE_LIMIT_RETRIES + 1):
+        try:
+            return _call_provider(system_prompt, user_message, model or LLM_MODEL)
+        except Exception as error:
+            message = str(error)
+            is_rate_limited = "429" in message or "RESOURCE_EXHAUSTED" in message
+            is_daily_quota = "PerDay" in message
+            if not is_rate_limited or is_daily_quota or attempt == RATE_LIMIT_RETRIES:
+                raise
+            wait = RATE_LIMIT_BACKOFF_SECONDS * (attempt + 1)
+            print(f"Rate limited by {LLM_PROVIDER}; retry in {wait}s")
+            time.sleep(wait)
+    raise RuntimeError("unreachable")
+
+
+def _call_provider(system_prompt: str, user_message: str, model: str) -> str:
     provider = LLM_PROVIDER.lower()
     if provider == "extractive":
         return _extractive_answer(user_message)
-    if not LLM_MODEL:
+    if not model:
         raise ValueError("LLM_MODEL is not configured")
     if provider == "openai":
         from openai import OpenAI
 
         response = OpenAI(api_key=os.getenv("OPENAI_API_KEY")).responses.create(
-            model=LLM_MODEL,
+            model=model,
             instructions=system_prompt,
             input=user_message,
             temperature=TEMPERATURE,
@@ -147,7 +171,7 @@ def call_llm(system_prompt: str, user_message: str) -> str:
 
         client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
         response = client.models.generate_content(
-            model=LLM_MODEL,
+            model=model,
             contents=user_message,
             config=types.GenerateContentConfig(
                 system_instruction=system_prompt,
@@ -160,7 +184,7 @@ def call_llm(system_prompt: str, user_message: str) -> str:
         from anthropic import Anthropic
 
         response = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY")).messages.create(
-            model=LLM_MODEL,
+            model=model,
             system=system_prompt,
             messages=[{"role": "user", "content": user_message}],
             max_tokens=1000,
