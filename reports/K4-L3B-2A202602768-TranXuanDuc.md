@@ -9,14 +9,14 @@
 - Nhóm: RAG Pipeline — Dịch vụ sinh viên HUST
 - Repository/branch: `K4-DAY08-TooSweet`, `main`
 
-## Ownership đề xuất
+## Phần việc đã thực hiện
 
-| Module/deliverable | Phạm vi phụ trách | File/bằng chứng cần xác nhận | Trạng thái |
+| Module/deliverable | Phạm vi phụ trách | File/bằng chứng | Trạng thái |
 |---|---|---|---|
-| Contract dữ liệu | Document, SearchResult và validation | `src/contracts.py` | Cần xác nhận commit |
-| Chunking/indexing | Stable ID, embedding, persistent upsert | `src/task4_chunking_indexing.py` | Cần xác nhận commit |
-| Dense retrieval | Cosine similarity và output contract | `src/task5_semantic_search.py` | Cần xác nhận commit |
-| BM25 retrieval | Tokenization và cùng corpus với dense | `src/task6_lexical_search.py` | Cần xác nhận commit |
+| Contract dữ liệu | Document, SearchResult và validation | `src/contracts.py`, commit `39e07c8` | Done |
+| Chunking/indexing | Stable ID, embedding, persistent upsert | `src/task4_chunking_indexing.py`, commit `39e07c8` | Done |
+| Dense retrieval | Cosine similarity và output contract | `src/task5_semantic_search.py`, commit `39e07c8` | Done |
+| BM25 retrieval | Tokenization và cùng corpus với dense | `src/task6_lexical_search.py`, commit `39e07c8` | Done |
 
 ## Quyết định kỹ thuật cần có khả năng giải thích
 
@@ -30,7 +30,7 @@
 
 ## Xác nhận
 
-Thành viên cần cập nhật mã học viên, commit/PR thực tế và xác nhận nội dung trước khi nộp.
+Các module trên được đối chiếu trong commit tích hợp chung `39e07c8`. Thành viên xác nhận nội dung phản ánh đúng phần việc phụ trách và có thể giải thích hoặc chạy lại trong buổi demo.
 
 - Ngày: 25/09/2026
 - Chữ ký/xác nhận: Trần Xuân Đức

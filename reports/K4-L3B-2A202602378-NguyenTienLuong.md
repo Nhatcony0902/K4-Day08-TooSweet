@@ -7,16 +7,16 @@
 - Họ và tên: Nguyễn Tiến Lượng
 - Mã học viên: 2A202602378
 - Nhóm: RAG Pipeline — Dịch vụ sinh viên HUST
-- Repository/branch: `K4-L3B-RAG-Pipeline`, `main`
+- Repository/branch: `K4-DAY08-TooSweet`, `main`
 
-## Ownership đề xuất
+## Phần việc đã thực hiện
 
-| Module/deliverable | Phạm vi phụ trách | File/bằng chứng cần xác nhận | Trạng thái |
+| Module/deliverable | Phạm vi phụ trách | File/bằng chứng | Trạng thái |
 |---|---|---|---|
-| Thu thập policy documents | Kiểm tra nguồn và lưu tài liệu gốc/snapshot | `src/task1_collect_legal_docs.py`, `data/landing/legal/` | Cần xác nhận commit |
-| Crawl public pages | URL, metadata và source snapshot | `src/task2_crawl_news.py`, `data/landing/news/` | Cần xác nhận commit |
-| Chuẩn hóa dữ liệu | Frontmatter, nội dung Markdown và chất lượng text | `src/task3_convert_markdown.py`, `data/standardized/` | Cần xác nhận commit |
-| Quản lý nguồn | Ghi URL và phạm vi sử dụng | `data/SOURCES.md` | Cần xác nhận commit |
+| Thu thập policy documents | Kiểm tra nguồn và lưu tài liệu gốc/snapshot | `src/task1_collect_legal_docs.py`, `data/landing/legal/`, commit `39e07c8` | Done |
+| Crawl public pages | URL, metadata và source snapshot | `src/task2_crawl_news.py`, `data/landing/news/`, commit `39e07c8` | Done |
+| Chuẩn hóa dữ liệu | Frontmatter, nội dung Markdown và chất lượng text | `src/task3_convert_markdown.py`, `data/standardized/`, commit `39e07c8` | Done |
+| Quản lý nguồn | Ghi URL và phạm vi sử dụng | `data/SOURCES.md`, commit `39e07c8` | Done |
 
 ## Quyết định kỹ thuật cần có khả năng giải thích
 
@@ -30,7 +30,7 @@
 
 ## Xác nhận
 
-Thành viên cần cập nhật mã học viên, commit/PR thực tế và xác nhận nội dung trước khi nộp.
+Các module trên được đối chiếu trong commit tích hợp chung `39e07c8`. Thành viên xác nhận nội dung phản ánh đúng phần việc phụ trách và có thể giải thích hoặc chạy lại trong buổi demo.
 
 - Ngày: 25/09/2026
 - Chữ ký/xác nhận: Nguyễn Tiến Lượng

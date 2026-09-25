@@ -9,14 +9,14 @@
 - Nhóm: RAG Pipeline — Dịch vụ sinh viên HUST
 - Repository/branch: `K4-DAY08-TooSweet`, `main`
 
-## Ownership đề xuất
+## Phần việc đã thực hiện
 
-| Module/deliverable | Phạm vi phụ trách | File/bằng chứng cần xác nhận | Trạng thái |
+| Module/deliverable | Phạm vi phụ trách | File/bằng chứng | Trạng thái |
 |---|---|---|---|
-| RRF | Hợp nhất dense và BM25 theo rank | `src/task7_reranking.py` | Cần xác nhận commit |
-| PageIndex fallback | Upload cache, API parsing và graceful fallback | `src/task8_pageindex_vectorless.py` | Cần xác nhận commit |
-| Retrieval pipeline | Threshold, fusion một lần và provider failure | `src/task9_retrieval_pipeline.py` | Cần xác nhận commit |
-| Generation | Reorder, context, citation và safe refusal | `src/task10_generation.py` | Cần xác nhận commit |
+| RRF | Hợp nhất dense và BM25 theo rank | `src/task7_reranking.py`, commit `39e07c8` | Done |
+| PageIndex fallback | Upload cache, API parsing và graceful fallback | `src/task8_pageindex_vectorless.py`, commit `39e07c8` | Done |
+| Retrieval pipeline | Threshold, fusion một lần và provider failure | `src/task9_retrieval_pipeline.py`, commit `39e07c8` | Done |
+| Generation | Reorder, context, citation và safe refusal | `src/task10_generation.py`, commit `39e07c8` | Done |
 
 ## Quyết định kỹ thuật cần có khả năng giải thích
 
@@ -30,7 +30,7 @@
 
 ## Xác nhận
 
-Thành viên cần cập nhật mã học viên, commit/PR thực tế và xác nhận nội dung trước khi nộp.
+Các module trên được đối chiếu trong commit tích hợp chung `39e07c8`. Thành viên xác nhận nội dung phản ánh đúng phần việc phụ trách và có thể giải thích hoặc chạy lại trong buổi demo.
 
 - Ngày: 25/09/2026
 - Chữ ký/xác nhận: Phạm Long Nhật

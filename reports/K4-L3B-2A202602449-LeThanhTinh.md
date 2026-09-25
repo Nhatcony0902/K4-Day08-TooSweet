@@ -8,16 +8,16 @@
 - Mã học viên: 2A202602449
 - Vai trò: Trưởng nhóm (Lead)
 - Nhóm: RAG Pipeline — Dịch vụ sinh viên HUST
-- Repository/branch: `K4-L3B-RAG-Pipeline`, `main`
+- Repository/branch: `K4-DAY08-TooSweet`, `main`
 
-## Ownership đề xuất
+## Phần việc đã thực hiện
 
-| Module/deliverable | Phạm vi phụ trách | File/bằng chứng cần xác nhận | Trạng thái |
+| Module/deliverable | Phạm vi phụ trách | File/bằng chứng | Trạng thái |
 |---|---|---|---|
-| Kiến trúc và tích hợp | Chốt contract, dependency order và review các module | `docs/`, `src/contracts.py` | Cần xác nhận commit |
-| Chatbot | Tích hợp generation, session state và hiển thị nguồn | `app.py` | Cần xác nhận commit |
-| Evaluation | Golden dataset, threshold calibration và A/B report | `src/evaluate.py`, `src/calibrate_threshold.py`, `group_project/evaluation/` | Cần xác nhận commit |
-| QA và bàn giao | Test, README, secret scan và demo checklist | `tests/`, `README.md`, `reports/` | Cần xác nhận commit |
+| Kiến trúc và tích hợp | Chốt contract, dependency order và review các module | `docs/`, `src/contracts.py`, commit `39e07c8` | Done |
+| Chatbot | Tích hợp generation, session state và hiển thị nguồn | `app.py`, commit `39e07c8` | Done |
+| Evaluation | Golden dataset, threshold calibration và A/B report | `src/evaluate.py`, `src/calibrate_threshold.py`, `group_project/evaluation/`, commit `39e07c8` | Done |
+| QA và bàn giao | Test, README, secret scan và demo checklist | `tests/`, `README.md`, `reports/`, commit `39e07c8` | Done |
 
 ## Quyết định kỹ thuật cần có khả năng giải thích
 
@@ -32,7 +32,7 @@
 
 ## Xác nhận
 
-Trưởng nhóm cần cập nhật mã học viên, commit/PR thực tế và xác nhận phân công của cả nhóm trước khi nộp.
+Các module trên được đối chiếu trong commit tích hợp chung `39e07c8`. Trưởng nhóm xác nhận phân công, kết quả tích hợp và khả năng chạy lại trong buổi demo.
 
 - Ngày: 25/09/2026
 - Chữ ký/xác nhận: Lê Thanh Tình
