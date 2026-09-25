@@ -1,0 +1,994 @@
+{
+  "reranker": {
+    "size": 15,
+    "rrf": {
+      "faithfulness": 0.9435933549372829,
+      "answer_relevance": 0.32689418016317223,
+      "context_recall": 0.9482456469850156,
+      "context_precision": 0.92,
+      "average": 0.7846832955213676
+    },
+    "rrf_bge": {
+      "faithfulness": 0.9474335833536149,
+      "answer_relevance": 0.25888988632717624,
+      "context_recall": 0.9453687228739719,
+      "context_precision": 0.9066666666666666,
+      "average": 0.7645897148053574
+    },
+    "latency_ms": {
+      "rrf": 14.54,
+      "rrf_bge": 7660.07
+    },
+    "conclusion": "BGE-M3 rerank giảm điểm trung bình (-0.020) và chậm hơn nhiều trên CPU; giữ RRF làm mặc định. So với RRF, BGE-M3 loại 22 chunk legal và 6 chunk news khỏi top-5, thêm 5 chunk legal và 23 chunk news. Nguyên nhân: Markdown của ba tài liệu legal không có dấu tiếng Việt, nên embedding ngữ nghĩa ưu tiên các bài news có dấu; BM25 trong RRF không bị ảnh hưởng vì so khớp theo token. Cần convert lại PDF gốc có dấu rồi đo lại.",
+    "cases": [
+      {
+        "question": "Học phí của sinh viên được tính như thế nào?",
+        "answer": "Sinh viên cần kiểm tra tổng số tiền, các học phần đang được tính ngoài chương trình đào tạo và phản hồi khi có sai lệch. [S1] Mức học phí của học phần trong và ngoài chương trình được tính như nhau, nhưng việc phân loại có thể ảnh hưởng đến học bổng khuyến khích học tập. [S1] Sinh viên tra cứu học phí trên Cổng thông tin sinh viên, vào mục Dịch vụ và chọn Học phí - Công nợ. [S1]",
+        "source_ids": [
+          "news/article_01::chunk-0000",
+          "news/article_01::chunk-0001",
+          "news/article_02::chunk-0001",
+          "news/article_02::chunk-0000",
+          "news/article_04::chunk-0001"
+        ],
+        "metrics": {
+          "faithfulness": 0.9772727272727273,
+          "answer_relevance": 0.3214285714285714,
+          "context_recall": 1.0,
+          "context_precision": 1.0
+        },
+        "latency_ms": 32448.57
+      },
+      {
+        "question": "Xin nghỉ học trong hai tuần đầu học kỳ thì được giảm học phí bao nhiêu?",
+        "answer": "Sinh vien xin nghi hoc, thoi hoc hoac chuyen truong trong hai tuan dau cua hoc ky chinh duoc mien 100 phan tram hoc phi hoc ky; nop trong dot A duoc giam 50 phan tram; cac truong hop con lai dong 100 phan tram. [S5] Học phí mỗi học kỳ được tính theo hai đợt: đợt đầu là số liệu sơ bộ, đợt hai cập nhật chính xác theo các học phần đã đăng ký. [S1] Một số giấy tờ được nhận vào các buổi sáng đầu tuần và trả vào buổi chiều; giấy vay vốn, sổ ưu đãi và biên lai học phí có lịch xử lý riêng. [S3]",
+        "source_ids": [
+          "news/article_01::chunk-0000",
+          "news/article_01::chunk-0001",
+          "news/article_02::chunk-0000",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+          "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002"
+        ],
+        "metrics": {
+          "faithfulness": 0.9473684210526315,
+          "answer_relevance": 0.16129032258064516,
+          "context_recall": 1.0,
+          "context_precision": 0.8
+        },
+        "latency_ms": 5735.75
+      },
+      {
+        "question": "Thời gian nghỉ học dài hạn tối đa là bao nhiêu học kỳ?",
+        "answer": "Nghi hoc dai han toi da bon hoc ky. [S4] Khong xet mien giam cho hoc ky he, hoc lai, hoc cai thien, hoc ngoai chuong trinh va hoc qua thoi gian ke hoach. [S5] Sinh vien xin nghi hoc, thoi hoc hoac chuyen truong trong hai tuan dau cua hoc ky chinh duoc mien 100 phan tram hoc phi hoc ky; nop trong dot A duoc giam 50 phan tram; cac truong hop con lai dong 100 phan tram. [S3]",
+        "source_ids": [
+          "news/article_01::chunk-0000",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+          "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+          "legal/quy_che_dao_tao_tin_chi_hust::chunk-0001",
+          "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003"
+        ],
+        "metrics": {
+          "faithfulness": 0.9318181818181818,
+          "answer_relevance": 0.3018867924528302,
+          "context_recall": 1.0,
+          "context_precision": 0.8
+        },
+        "latency_ms": 5904.26
+      },
+      {
+        "question": "Sinh viên bị cảnh cáo học tập mức một được đăng ký tối đa bao nhiêu tín chỉ?",
+        "answer": "Sinh vien bi canh cao muc mot duoc dang ky toi da 18 tin chi va toi thieu 10 tin chi trong hoc ky chinh; muc hai toi da 14 tin chi va toi thieu 8 tin chi. [S5] Sinh viên tra cứu học phí trên Cổng thông tin sinh viên, vào mục Dịch vụ và chọn Học phí - Công nợ. [S2] Người không hoàn thành nghĩa vụ học phí sau hạn có thể bị xem xét đình chỉ đăng ký học tập ở kỳ tiếp theo. [S1]",
+        "source_ids": [
+          "news/article_01::chunk-0001",
+          "news/article_01::chunk-0000",
+          "news/article_03::chunk-0000",
+          "news/article_05::chunk-0000",
+          "legal/quy_che_dao_tao_tin_chi_hust::chunk-0001"
+        ],
+        "metrics": {
+          "faithfulness": 0.9318181818181818,
+          "answer_relevance": 0.2352941176470588,
+          "context_recall": 1.0,
+          "context_precision": 1.0
+        },
+        "latency_ms": 5694.13
+      },
+      {
+        "question": "Điều kiện cần để xét học bổng khuyến khích học tập là gì?",
+        "answer": "ó thể ảnh hưởng đến học bổng khuyến khích học tập. [S1] Mức học phí của học phần trong và ngoài chương trình được tính như nhau, nhưng việc phân loại có thể ảnh hưởng đến học bổng khuyến khích học tập. [S2] Người không hoàn thành nghĩa vụ học phí sau hạn có thể bị xem xét đình chỉ đăng ký học tập ở kỳ tiếp theo. [S1]",
+        "source_ids": [
+          "news/article_01::chunk-0001",
+          "news/article_01::chunk-0000",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+          "news/article_04::chunk-0001",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0001"
+        ],
+        "metrics": {
+          "faithfulness": 0.9473684210526315,
+          "answer_relevance": 0.1724137931034483,
+          "context_recall": 0.6206896551724138,
+          "context_precision": 1.0
+        },
+        "latency_ms": 5866.16
+      },
+      {
+        "question": "Học bổng hỗ trợ học tập bán phần bằng bao nhiêu học bổng toàn phần?",
+        "answer": "Hoc bong ho tro hoc tap yeu cau hoan canh kinh te kho khan. [S5] an phan; muc ban phan bang 50 phan tram toan phan. [S4] De duy tri hoc bong ho tro, CPA toi thieu la 2,0 sau nam thu nhat, 2,25 sau nam thu hai, va 2,5 tu sau nam thu ba. [S3]",
+        "source_ids": [
+          "news/article_01::chunk-0000",
+          "news/article_01::chunk-0001",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0002"
+        ],
+        "metrics": {
+          "faithfulness": 0.918918918918919,
+          "answer_relevance": 0.27906976744186046,
+          "context_recall": 1.0,
+          "context_precision": 1.0
+        },
+        "latency_ms": 5901.61
+      },
+      {
+        "question": "Sinh viên từ năm thứ hai cần CPA bao nhiêu để xét học bổng tài năng?",
+        "answer": "Sinh vien tu nam thu hai can tich luy du tin chi, khong co hoc phan diem F, CPA tu 3,4 va diem ren luyen trung binh tu 85 de duoc xet hoc bong tai nang. [S2] Sinh vien tu nam thu hai can tich luy du tin chi, CPA tu 2,0 va diem ren luyen trung binh tu 80. [S2] Sinh vien nam thu nhat co the nhan hoc bong tai nang khi hanh kiem ba nam trung hoc pho thong loai tot va dat thanh tich Olympic quoc te, chau A, giai nhat hoc sinh gioi quoc gia hoac la thu khoa dau vao. [S3]",
+        "source_ids": [
+          "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+          "news/article_05::chunk-0000",
+          "news/article_04::chunk-0000"
+        ],
+        "metrics": {
+          "faithfulness": 0.9607843137254902,
+          "answer_relevance": 0.07142857142857142,
+          "context_recall": 0.9473684210526315,
+          "context_precision": 1.0
+        },
+        "latency_ms": 6144.12
+      },
+      {
+        "question": "Sinh viên từ năm thứ hai nộp hồ sơ học bổng hỗ trợ học tập trước ngày nào?",
+        "answer": "De duy tri hoc bong ho tro, CPA toi thieu la 2,0 sau nam thu nhat, 2,25 sau nam thu hai, va 2,5 tu sau nam thu ba. [S2] Sinh vien tu nam thu hai can tich luy du tin chi, khong co hoc phan diem F, CPA tu 3,4 va diem ren luyen trung binh tu 85 de duoc xet hoc bong tai nang. [S4] Ho so dang ky nop truoc ngay 31 thang 7; danh sach duoc cong bo truoc ngay 30 thang 10; hoc bong chi theo hoc ky. [S4]",
+        "source_ids": [
+          "news/article_02::chunk-0001",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+          "news/article_04::chunk-0000",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0001"
+        ],
+        "metrics": {
+          "faithfulness": 0.96,
+          "answer_relevance": 0.2903225806451613,
+          "context_recall": 0.875,
+          "context_precision": 1.0
+        },
+        "latency_ms": 6101.17
+      },
+      {
+        "question": "Sau năm thứ ba, CPA tối thiểu để duy trì học bổng hỗ trợ là bao nhiêu?",
+        "answer": "De duy tri hoc bong ho tro, CPA toi thieu la 2,0 sau nam thu nhat, 2,25 sau nam thu hai, va 2,5 tu sau nam thu ba. [S1] Sinh vien tu nam thu hai can tich luy du tin chi, khong co hoc phan diem F, CPA tu 3,4 va diem ren luyen trung binh tu 85 de duoc xet hoc bong tai nang. [S2] Sinh vien nam thu nhat co the nhan hoc bong tai nang khi hanh kiem ba nam trung hoc pho thong loai tot va dat thanh tich Olympic quoc te, chau A, giai nhat hoc sinh gioi quoc gia hoac la thu khoa dau vao. [S4]",
+        "source_ids": [
+          "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+          "news/article_04::chunk-0000",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+          "news/article_05::chunk-0000"
+        ],
+        "metrics": {
+          "faithfulness": 0.9491525423728814,
+          "answer_relevance": 0.0967741935483871,
+          "context_recall": 0.9411764705882353,
+          "context_precision": 1.0
+        },
+        "latency_ms": 5986.4
+      },
+      {
+        "question": "Hồ sơ học bổng hỗ trợ học tập cần giấy tờ gì?",
+        "answer": "Hoc bong ho tro hoc tap danh cho sinh vien co hoan canh kho khan va ket qua ren luyen tot, gom toan phan va ban phan; muc ban phan bang 50 phan tram toan phan. [S5] Đây cũng là đầu mối cho nhiều thông tin về hoạt động xã hội, việc làm, rèn luyện và hỗ trợ học tập. [S4] Một số giấy tờ được nhận vào các buổi sáng đầu tuần và trả vào buổi chiều; giấy vay vốn, sổ ưu đãi và biên lai học phí có lịch xử lý riêng. [S1]",
+        "source_ids": [
+          "news/article_02::chunk-0000",
+          "news/article_01::chunk-0001",
+          "news/article_01::chunk-0000",
+          "news/article_04::chunk-0000",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0000"
+        ],
+        "metrics": {
+          "faithfulness": 0.95,
+          "answer_relevance": 0.15189873417721522,
+          "context_recall": 0.8333333333333334,
+          "context_precision": 1.0
+        },
+        "latency_ms": 6050.56
+      },
+      {
+        "question": "Sinh viên tra cứu học phí và công nợ ở đâu?",
+        "answer": "Sinh viên tra cứu học phí trên Cổng thông tin sinh viên, vào mục Dịch vụ và chọn Học phí - Công nợ. [S1] Đại học Bách khoa Hà Nội công bố lịch tiếp nhận và trả các loại giấy tờ cho sinh viên. [S4] Sinh viên thanh toán theo hướng dẫn hiển thị cùng số liệu công nợ. [S3]",
+        "source_ids": [
+          "news/article_01::chunk-0000",
+          "news/article_02::chunk-0001",
+          "news/article_01::chunk-0001",
+          "news/article_02::chunk-0000",
+          "news/article_04::chunk-0001"
+        ],
+        "metrics": {
+          "faithfulness": 0.9166666666666666,
+          "answer_relevance": 0.4583333333333333,
+          "context_recall": 1.0,
+          "context_precision": 1.0
+        },
+        "latency_ms": 5865.17
+      },
+      {
+        "question": "Không hoàn thành học phí đúng hạn có thể dẫn tới hậu quả gì?",
+        "answer": "Người không hoàn thành nghĩa vụ học phí sau hạn có thể bị xem xét đình chỉ đăng ký học tập ở kỳ tiếp theo. [S1] Moi sinh vien duoc nhan khong qua mot hoc bong tai tro trong mot nam hoc. [S4] Hoc phi duoc tinh theo tong so tin chi hoc phi cua cac hoc phan dang ky thanh cong. [S5]",
+        "source_ids": [
+          "news/article_01::chunk-0001",
+          "news/article_01::chunk-0000",
+          "news/article_02::chunk-0000",
+          "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+          "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002"
+        ],
+        "metrics": {
+          "faithfulness": 0.9166666666666666,
+          "answer_relevance": 0.4347826086956522,
+          "context_recall": 1.0,
+          "context_precision": 1.0
+        },
+        "latency_ms": 6077.42
+      },
+      {
+        "question": "Sinh viên có thể xin xác nhận những loại giấy tờ nào?",
+        "answer": "Đại học Bách khoa Hà Nội công bố lịch tiếp nhận và trả các loại giấy tờ cho sinh viên. [S1] Các thủ tục gồm sổ ưu đãi, giấy chứng nhận sinh viên, giấy chứng nhận tạm thời khi mất thẻ, xác nhận vé tháng xe buýt, giấy giới thiệu, giấy vay vốn ngân hàng và biên lai học phí. [S1] Khi can giai quyet thu tuc, sinh vien nen truy cap cong thong tin chinh thuc, doc lich tiep nhan cua don vi phu trach, chuan bi dung bieu mau va giay to minh chung, sau do giu bien nhan de theo doi ket qua. [S5]",
+        "source_ids": [
+          "news/article_02::chunk-0000",
+          "news/article_03::chunk-0000",
+          "news/article_05::chunk-0000",
+          "news/article_01::chunk-0000",
+          "legal/so_tay_sinh_vien_hust::chunk-0004"
+        ],
+        "metrics": {
+          "faithfulness": 0.9710144927536232,
+          "answer_relevance": 0.2857142857142857,
+          "context_recall": 1.0,
+          "context_precision": 0.8
+        },
+        "latency_ms": 5719.98
+      },
+      {
+        "question": "Ban Công tác sinh viên hỗ trợ những nội dung nào?",
+        "answer": "Ban Công tác sinh viên tham mưu và hỗ trợ công tác quản lý người học, tư vấn và tạo điều kiện cho sinh viên, đặc biệt là người học có hoàn cảnh khó khăn hoặc hoàn cảnh đặc biệt. [S1] Ban triển khai các hoạt động bảo hiểm y tế và khám sức khỏe; thực hiện chế độ chính sách, học bổng và hỗ trợ sinh viên; phối hợp xây dựng môi trường văn hóa, kỹ năng nghề nghiệp và kỹ năng sống. [S1] thiệu từ Ban Công tác sinh viên khi được yêu cầu. [S4]",
+        "source_ids": [
+          "news/article_04::chunk-0000",
+          "news/article_04::chunk-0001",
+          "news/article_03::chunk-0000",
+          "news/article_05::chunk-0001",
+          "news/article_01::chunk-0000"
+        ],
+        "metrics": {
+          "faithfulness": 0.9649122807017544,
+          "answer_relevance": 0.3846153846153846,
+          "context_recall": 1.0,
+          "context_precision": 0.2
+        },
+        "latency_ms": 5974.96
+      },
+      {
+        "question": "Tân sinh viên cần làm gì để tránh lừa đảo khi đăng ký ký túc xá?",
+        "answer": "Sinh viên đăng ký Ký túc xá Pháp Vân cần làm theo hướng dẫn và lấy giấy giới thiệu từ Ban Công tác sinh viên khi được yêu cầu. [S1] Sinh viên cần kiểm tra tổng số tiền, các học phần đang được tính ngoài chương trình đào tạo và phản hồi khi có sai lệch. [S5] Với Ký túc xá Bách khoa, sinh viên chỉ đăng ký sau thời điểm trường thông báo qua hệ thống chính thức của ký túc xá và có thể liên hệ Trung tâm Dịch vụ và Hỗ trợ Bách khoa tại khuôn viên trường. [S1]",
+        "source_ids": [
+          "news/article_05::chunk-0000",
+          "news/article_05::chunk-0001",
+          "news/article_03::chunk-0000",
+          "news/article_04::chunk-0001",
+          "news/article_01::chunk-0000"
+        ],
+        "metrics": {
+          "faithfulness": 0.967741935483871,
+          "answer_relevance": 0.23809523809523805,
+          "context_recall": 0.9629629629629629,
+          "context_precision": 1.0
+        },
+        "latency_ms": 5430.53
+      }
+    ]
+  },
+  "memory": {
+    "size": 6,
+    "aggregate": {
+      "Không memory (câu gốc)": {
+        "context_recall": 0.9276924951267057,
+        "source_hit_rate": 1.0
+      },
+      "Memory heuristic (ghép câu trước)": {
+        "context_recall": 0.9431042884990254,
+        "source_hit_rate": 1.0
+      },
+      "Memory LLM rewrite (gemini / gemini-2.5-flash-lite)": {
+        "context_recall": 0.9639376218323586,
+        "source_hit_rate": 1.0
+      }
+    },
+    "conclusion": "Memory LLM rewrite (gemini / gemini-2.5-flash-lite) tăng context recall +0.036 và source hit rate +0.000 so với không dùng memory. Không memory vẫn tìm đúng tài liệu nguồn ở mọi case vì corpus chỉ có 24 chunks; memory cải thiện việc lấy đúng đoạn trong tài liệu.",
+    "cases": {
+      "Không memory (câu gốc)": [
+        {
+          "query": "Còn hồ sơ thì cần những giấy tờ gì?",
+          "context_recall": 0.9444444444444444,
+          "source_hit": true
+        },
+        {
+          "query": "Vậy năm hai nộp hồ sơ trước ngày nào?",
+          "context_recall": 0.9375,
+          "source_hit": true
+        },
+        {
+          "query": "Nếu đóng muộn thì sao?",
+          "context_recall": 1.0,
+          "source_hit": true
+        },
+        {
+          "query": "Còn nghỉ trong hai tuần đầu thì được miễn bao nhiêu?",
+          "context_recall": 1.0,
+          "source_hit": true
+        },
+        {
+          "query": "Còn loại tài năng thì cần CPA bao nhiêu?",
+          "context_recall": 0.6842105263157895,
+          "source_hit": true
+        },
+        {
+          "query": "Có xác nhận giấy tờ không?",
+          "context_recall": 1.0,
+          "source_hit": true
+        }
+      ],
+      "Memory heuristic (ghép câu trước)": [
+        {
+          "query": "Học bổng hỗ trợ học tập bán phần bằng bao nhiêu học bổng toàn phần? Còn hồ sơ thì cần những giấy tờ gì?",
+          "context_recall": 0.8888888888888888,
+          "source_hit": true
+        },
+        {
+          "query": "Học bổng hỗ trợ học tập bán phần bằng bao nhiêu học bổng toàn phần? Vậy năm hai nộp hồ sơ trước ngày nào?",
+          "context_recall": 0.875,
+          "source_hit": true
+        },
+        {
+          "query": "Sinh viên tra cứu học phí và công nợ ở đâu? Nếu đóng muộn thì sao?",
+          "context_recall": 1.0,
+          "source_hit": true
+        },
+        {
+          "query": "Thời gian nghỉ học dài hạn tối đa là bao nhiêu học kỳ? Còn nghỉ trong hai tuần đầu thì được miễn bao nhiêu?",
+          "context_recall": 1.0,
+          "source_hit": true
+        },
+        {
+          "query": "Điều kiện cần để xét học bổng khuyến khích học tập là gì? Còn loại tài năng thì cần CPA bao nhiêu?",
+          "context_recall": 0.8947368421052632,
+          "source_hit": true
+        },
+        {
+          "query": "Có xác nhận giấy tờ không?",
+          "context_recall": 1.0,
+          "source_hit": true
+        }
+      ],
+      "Memory LLM rewrite (gemini / gemini-2.5-flash-lite)": [
+        {
+          "query": "Hồ sơ xin học bổng hỗ trợ học tập bán phần cần những giấy tờ gì?",
+          "context_recall": 0.8888888888888888,
+          "source_hit": true
+        },
+        {
+          "query": "Vậy năm hai nộp hồ sơ trước ngày nào để được hưởng học bổng hỗ trợ học tập bán phần?",
+          "context_recall": 1.0,
+          "source_hit": true
+        },
+        {
+          "query": "Nếu sinh viên đóng học phí và công nợ muộn thì sẽ bị xử lý như thế nào?",
+          "context_recall": 1.0,
+          "source_hit": true
+        },
+        {
+          "query": "Còn nghỉ trong hai tuần đầu thì được miễn bao nhiêu học kỳ?",
+          "context_recall": 1.0,
+          "source_hit": true
+        },
+        {
+          "query": "Điều kiện cần để xét học bổng khuyến khích học tập là gì, và còn loại tài năng thì cần CPA bao nhiêu?",
+          "context_recall": 0.8947368421052632,
+          "source_hit": true
+        },
+        {
+          "query": "Ban Công tác sinh viên có hỗ trợ xác nhận giấy tờ không?",
+          "context_recall": 1.0,
+          "source_hit": true
+        }
+      ]
+    },
+    "llm_rewrite": {
+      "model": "gemini-2.5-flash-lite",
+      "queries": [
+        "Hồ sơ xin học bổng hỗ trợ học tập bán phần cần những giấy tờ gì?",
+        "Vậy năm hai nộp hồ sơ trước ngày nào để được hưởng học bổng hỗ trợ học tập bán phần?",
+        "Nếu sinh viên đóng học phí và công nợ muộn thì sẽ bị xử lý như thế nào?",
+        "Còn nghỉ trong hai tuần đầu thì được miễn bao nhiêu học kỳ?",
+        "Điều kiện cần để xét học bổng khuyến khích học tập là gì, và còn loại tài năng thì cần CPA bao nhiêu?",
+        "Ban Công tác sinh viên có hỗ trợ xác nhận giấy tờ không?"
+      ]
+    }
+  },
+  "generator": {
+    "extractive": {
+      "strategy": "hybrid_rrf",
+      "generator": "Extractive baseline (offline)",
+      "aggregate": {
+        "faithfulness": 0.9435933549372829,
+        "answer_relevance": 0.32689418016317223,
+        "context_recall": 0.9482456469850156,
+        "context_precision": 0.92,
+        "average": 0.7846832955213676
+      },
+      "average_latency_ms": 14.54,
+      "cases": [
+        {
+          "question": "Học phí của sinh viên được tính như thế nào?",
+          "answer": "Sinh viên cần kiểm tra tổng số tiền, các học phần đang được tính ngoài chương trình đào tạo và phản hồi khi có sai lệch. [S1] Mức học phí của học phần trong và ngoài chương trình được tính như nhau, nhưng việc phân loại có thể ảnh hưởng đến học bổng khuyến khích học tập. [S1] Sinh vien thuoc dien chinh sach duoc xet mien giam hoc phi theo quy dinh. [S2]",
+          "source_ids": [
+            "news/article_01::chunk-0000",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+            "news/article_01::chunk-0001",
+            "news/article_05::chunk-0000",
+            "news/article_02::chunk-0001"
+          ],
+          "metrics": {
+            "faithfulness": 0.9545454545454546,
+            "answer_relevance": 0.25,
+            "context_recall": 1.0,
+            "context_precision": 1.0
+          },
+          "latency_ms": 14.23
+        },
+        {
+          "question": "Xin nghỉ học trong hai tuần đầu học kỳ thì được giảm học phí bao nhiêu?",
+          "answer": "Sinh vien xin nghi hoc, thoi hoc hoac chuyen truong trong hai tuan dau cua hoc ky chinh duoc mien 100 phan tram hoc phi hoc ky; nop trong dot A duoc giam 50 phan tram; cac truong hop con lai dong 100 phan tram. [S1] Học phí mỗi học kỳ được tính theo hai đợt: đợt đầu là số liệu sơ bộ, đợt hai cập nhật chính xác theo các học phần đã đăng ký. [S2] Nghi hoc dai han toi da bon hoc ky. [S3]",
+          "source_ids": [
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+            "news/article_01::chunk-0000",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0001",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003",
+            "news/article_01::chunk-0001"
+          ],
+          "metrics": {
+            "faithfulness": 0.9333333333333333,
+            "answer_relevance": 0.19999999999999998,
+            "context_recall": 1.0,
+            "context_precision": 0.8
+          },
+          "latency_ms": 14.69
+        },
+        {
+          "question": "Thời gian nghỉ học dài hạn tối đa là bao nhiêu học kỳ?",
+          "answer": "Nghi hoc dai han toi da bon hoc ky. [S1] Khong xet mien giam cho hoc ky he, hoc lai, hoc cai thien, hoc ngoai chuong trinh va hoc qua thoi gian ke hoach. [S3] Sinh vien xin nghi hoc, thoi hoc hoac chuyen truong trong hai tuan dau cua hoc ky chinh duoc mien 100 phan tram hoc phi hoc ky; nop trong dot A duoc giam 50 phan tram; cac truong hop con lai dong 100 phan tram. [S2]",
+          "source_ids": [
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0001",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003",
+            "news/article_04::chunk-0000",
+            "news/article_01::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.9318181818181818,
+            "answer_relevance": 0.3018867924528302,
+            "context_recall": 1.0,
+            "context_precision": 0.6
+          },
+          "latency_ms": 14.15
+        },
+        {
+          "question": "Sinh viên bị cảnh cáo học tập mức một được đăng ký tối đa bao nhiêu tín chỉ?",
+          "answer": "Sinh vien bi canh cao muc mot duoc dang ky toi da 18 tin chi va toi thieu 10 tin chi trong hoc ky chinh; muc hai toi da 14 tin chi va toi thieu 8 tin chi. [S1] Canh cao hoc tap duoc ap dung dua tren so tin chi khong dat va so tin chi no dong. [S4] Sinh vien duoc xep hang trinh do nam hoc dua tren so tin chi tich luy. [S4]",
+          "source_ids": [
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0001",
+            "news/article_01::chunk-0000",
+            "news/article_05::chunk-0000",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0000",
+            "news/article_03::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.9428571428571428,
+            "answer_relevance": 0.2857142857142857,
+            "context_recall": 1.0,
+            "context_precision": 1.0
+          },
+          "latency_ms": 14.2
+        },
+        {
+          "question": "Điều kiện cần để xét học bổng khuyến khích học tập là gì?",
+          "answer": "Dieu kien can de xet hoc bong khuyen khich la khong co hoc phan khong dat, dat du so tin chi theo ke hoach va diem trung binh hoc ky cung diem trung binh tich luy tu loai kha tro len. [S1] ó thể ảnh hưởng đến học bổng khuyến khích học tập. [S2] Hoc bong gom hoc bong khuyen khich hoc tap, hoc bong chinh sach va hoc bong tai tro. [S1]",
+          "source_ids": [
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003",
+            "news/article_01::chunk-0001",
+            "news/article_01::chunk-0000",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.95,
+            "answer_relevance": 0.5666666666666667,
+            "context_recall": 0.8275862068965517,
+            "context_precision": 1.0
+          },
+          "latency_ms": 13.57
+        },
+        {
+          "question": "Học bổng hỗ trợ học tập bán phần bằng bao nhiêu học bổng toàn phần?",
+          "answer": "Hoc bong ho tro hoc tap danh cho sinh vien co hoan canh kho khan va ket qua ren luyen tot, gom toan phan va ban phan; muc ban phan bang 50 phan tram toan phan. [S1] Hoc bong ho tro hoc tap yeu cau hoan canh kinh te kho khan. [S5] Đây cũng là đầu mối cho nhiều thông tin về hoạt động xã hội, việc làm, rèn luyện và hỗ trợ học tập. [S4]",
+          "source_ids": [
+            "legal/quy_dinh_hoc_bong_hust::chunk-0000",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003",
+            "news/article_04::chunk-0000",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002"
+          ],
+          "metrics": {
+            "faithfulness": 0.9285714285714286,
+            "answer_relevance": 0.25,
+            "context_recall": 1.0,
+            "context_precision": 1.0
+          },
+          "latency_ms": 13.94
+        },
+        {
+          "question": "Sinh viên từ năm thứ hai cần CPA bao nhiêu để xét học bổng tài năng?",
+          "answer": "Sinh vien tu nam thu hai can tich luy du tin chi, khong co hoc phan diem F, CPA tu 3,4 va diem ren luyen trung binh tu 85 de duoc xet hoc bong tai nang. [S1] Sinh vien tu nam thu hai can tich luy du tin chi, CPA tu 2,0 va diem ren luyen trung binh tu 80. [S1] Sinh vien nam thu nhat co the nhan hoc bong tai nang khi hanh kiem ba nam trung hoc pho thong loai tot va dat thanh tich Olympic quoc te, chau A, giai nhat hoc sinh gioi quoc gia hoac la thu khoa dau vao. [S3]",
+          "source_ids": [
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+            "legal/so_tay_sinh_vien_hust::chunk-0000",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.9607843137254902,
+            "answer_relevance": 0.07142857142857142,
+            "context_recall": 0.8947368421052632,
+            "context_precision": 1.0
+          },
+          "latency_ms": 13.65
+        },
+        {
+          "question": "Sinh viên từ năm thứ hai nộp hồ sơ học bổng hỗ trợ học tập trước ngày nào?",
+          "answer": "De duy tri hoc bong ho tro, CPA toi thieu la 2,0 sau nam thu nhat, 2,25 sau nam thu hai, va 2,5 tu sau nam thu ba. [S2] Sinh vien tu nam thu hai can tich luy du tin chi, khong co hoc phan diem F, CPA tu 3,4 va diem ren luyen trung binh tu 85 de duoc xet hoc bong tai nang. [S1] Ho so dang ky nop truoc ngay 31 thang 7; danh sach duoc cong bo truoc ngay 30 thang 10; hoc bong chi theo hoc ky. [S1]",
+          "source_ids": [
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+            "news/article_04::chunk-0000",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003"
+          ],
+          "metrics": {
+            "faithfulness": 0.96,
+            "answer_relevance": 0.2903225806451613,
+            "context_recall": 0.875,
+            "context_precision": 1.0
+          },
+          "latency_ms": 14.03
+        },
+        {
+          "question": "Sau năm thứ ba, CPA tối thiểu để duy trì học bổng hỗ trợ là bao nhiêu?",
+          "answer": "De duy tri hoc bong ho tro, CPA toi thieu la 2,0 sau nam thu nhat, 2,25 sau nam thu hai, va 2,5 tu sau nam thu ba. [S1] Ban Cong tac sinh vien ho tro cac noi dung ve che do chinh sach, hoc bong, bao hiem y te, diem ren luyen, viec lam, thuc tap va cac thu tuc hanh chinh. [S5] Sinh vien tu nam thu hai can tich luy du tin chi, khong co hoc phan diem F, CPA tu 3,4 va diem ren luyen trung binh tu 85 de duoc xet hoc bong tai nang. [S3]",
+          "source_ids": [
+            "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+            "news/article_04::chunk-0000",
+            "legal/so_tay_sinh_vien_hust::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.9454545454545454,
+            "answer_relevance": 0.10344827586206896,
+            "context_recall": 0.9411764705882353,
+            "context_precision": 1.0
+          },
+          "latency_ms": 14.91
+        },
+        {
+          "question": "Hồ sơ học bổng hỗ trợ học tập cần giấy tờ gì?",
+          "answer": "Ho so hoc bong ho tro gom don dang ky va minh chung ho ngheo, can ngheo hoac hoan canh dac biet kho khan co xac nhan cua dia phuong. [S1] Hoc bong ho tro hoc tap yeu cau hoan canh kinh te kho khan. [S4] Hoc bong ho tro hoc tap danh cho sinh vien co hoan canh kho khan va ket qua ren luyen tot, gom toan phan va ban phan; muc ban phan bang 50 phan tram toan phan. [S3]",
+          "source_ids": [
+            "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0000",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+            "news/article_04::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.9318181818181818,
+            "answer_relevance": 0.4761904761904762,
+            "context_recall": 0.8333333333333334,
+            "context_precision": 1.0
+          },
+          "latency_ms": 15.36
+        },
+        {
+          "question": "Sinh viên tra cứu học phí và công nợ ở đâu?",
+          "answer": "Sinh viên tra cứu học phí trên Cổng thông tin sinh viên, vào mục Dịch vụ và chọn Học phí - Công nợ. [S1] Hoc bong nghien cuu danh cho hoc vien cao hoc va nghien cuu sinh co cong bo khoa hoc uy tin. [S5] Sinh viên thanh toán theo hướng dẫn hiển thị cùng số liệu công nợ. [S2]",
+          "source_ids": [
+            "news/article_01::chunk-0000",
+            "news/article_01::chunk-0001",
+            "news/article_02::chunk-0001",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0001"
+          ],
+          "metrics": {
+            "faithfulness": 0.9032258064516129,
+            "answer_relevance": 0.5116279069767442,
+            "context_recall": 1.0,
+            "context_precision": 1.0
+          },
+          "latency_ms": 14.84
+        },
+        {
+          "question": "Không hoàn thành học phí đúng hạn có thể dẫn tới hậu quả gì?",
+          "answer": "Người không hoàn thành nghĩa vụ học phí sau hạn có thể bị xem xét đình chỉ đăng ký học tập ở kỳ tiếp theo. [S1] Moi sinh vien duoc nhan khong qua mot hoc bong tai tro trong mot nam hoc. [S5] Hoc phi duoc tinh theo tong so tin chi hoc phi cua cac hoc phan dang ky thanh cong. [S3]",
+          "source_ids": [
+            "news/article_01::chunk-0001",
+            "news/article_03::chunk-0000",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+            "legal/so_tay_sinh_vien_hust::chunk-0002",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0003"
+          ],
+          "metrics": {
+            "faithfulness": 0.9166666666666666,
+            "answer_relevance": 0.4347826086956522,
+            "context_recall": 1.0,
+            "context_precision": 1.0
+          },
+          "latency_ms": 14.46
+        },
+        {
+          "question": "Sinh viên có thể xin xác nhận những loại giấy tờ nào?",
+          "answer": "Đại học Bách khoa Hà Nội công bố lịch tiếp nhận và trả các loại giấy tờ cho sinh viên. [S2] Sinh vien co the xin giay chung nhan sinh vien, giay gioi thieu, ban sao bang diem, giay vay von ngan hang va cac xac nhan lien quan. [S1] Các thủ tục gồm sổ ưu đãi, giấy chứng nhận sinh viên, giấy chứng nhận tạm thời khi mất thẻ, xác nhận vé tháng xe buýt, giấy giới thiệu, giấy vay vốn ngân hàng và biên lai học phí. [S2]",
+          "source_ids": [
+            "legal/so_tay_sinh_vien_hust::chunk-0001",
+            "news/article_02::chunk-0000",
+            "news/article_03::chunk-0000",
+            "news/article_01::chunk-0000",
+            "legal/so_tay_sinh_vien_hust::chunk-0004"
+          ],
+          "metrics": {
+            "faithfulness": 0.9583333333333334,
+            "answer_relevance": 0.47619047619047616,
+            "context_recall": 1.0,
+            "context_precision": 0.8
+          },
+          "latency_ms": 14.27
+        },
+        {
+          "question": "Ban Công tác sinh viên hỗ trợ những nội dung nào?",
+          "answer": "Ban Cong tac sinh vien ho tro cac noi dung ve che do chinh sach, hoc bong, bao hiem y te, diem ren luyen, viec lam, thuc tap va cac thu tuc hanh chinh. [S1] Ban Công tác sinh viên tham mưu và hỗ trợ công tác quản lý người học, tư vấn và tạo điều kiện cho sinh viên, đặc biệt là người học có hoàn cảnh khó khăn hoặc hoàn cảnh đặc biệt. [S2] Ban triển khai các hoạt động bảo hiểm y tế và khám sức khỏe; thực hiện chế độ chính sách, học bổng và hỗ trợ sinh viên; phối hợp xây dựng môi trường văn hóa, kỹ năng nghề nghiệp và kỹ năng sống. [S2]",
+          "source_ids": [
+            "legal/so_tay_sinh_vien_hust::chunk-0000",
+            "news/article_04::chunk-0000",
+            "news/article_05::chunk-0000",
+            "news/article_04::chunk-0001",
+            "news/article_05::chunk-0001"
+          ],
+          "metrics": {
+            "faithfulness": 0.96875,
+            "answer_relevance": 0.4470588235294118,
+            "context_recall": 1.0,
+            "context_precision": 0.6
+          },
+          "latency_ms": 13.95
+        },
+        {
+          "question": "Tân sinh viên cần làm gì để tránh lừa đảo khi đăng ký ký túc xá?",
+          "answer": "Sinh viên đăng ký Ký túc xá Pháp Vân cần làm theo hướng dẫn và lấy giấy giới thiệu từ Ban Công tác sinh viên khi được yêu cầu. [S1] Sinh viên cần kiểm tra tổng số tiền, các học phần đang được tính ngoài chương trình đào tạo và phản hồi khi có sai lệch. [S3] Với Ký túc xá Bách khoa, sinh viên chỉ đăng ký sau thời điểm trường thông báo qua hệ thống chính thức của ký túc xá và có thể liên hệ Trung tâm Dịch vụ và Hỗ trợ Bách khoa tại khuôn viên trường. [S1]",
+          "source_ids": [
+            "news/article_05::chunk-0000",
+            "news/article_03::chunk-0000",
+            "news/article_01::chunk-0000",
+            "legal/so_tay_sinh_vien_hust::chunk-0002",
+            "news/article_04::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.967741935483871,
+            "answer_relevance": 0.23809523809523805,
+            "context_recall": 0.8518518518518519,
+            "context_precision": 1.0
+          },
+          "latency_ms": 17.67
+        }
+      ]
+    },
+    "llm": {
+      "strategy": "hybrid_rrf",
+      "generator": "gemini / gemini-3-flash-preview",
+      "aggregate": {
+        "faithfulness": 0.8591389488001251,
+        "answer_relevance": 0.5116041967649552,
+        "context_recall": 0.9482456469850156,
+        "context_precision": 0.92,
+        "average": 0.8097471981375239
+      },
+      "average_latency_ms": 7402.74,
+      "cases": [
+        {
+          "question": "Học phí của sinh viên được tính như thế nào?",
+          "answer": "Học phí của sinh viên được tính dựa trên các quy tắc sau:\n\n*   **Cách tính tổng quát:** Học phí được tính theo tổng số tín chỉ học phí của các học phần mà sinh viên đã đăng ký thành công [S2]. Mức học phí của các học phần trong và ngoài chương trình đào tạo được tính như nhau [S1].\n*   **Quy trình tính toán:** Trong mỗi học kỳ, học phí được tính theo hai đợt: đợt đầu là số liệu sơ bộ và đợt hai sẽ cập nhật chính xác theo các học phần thực tế đã đăng ký [S1].\n*   **Chế độ miễn, giảm học phí:**\n    *   Sinh viên thuộc diện chính sách được xét miễn giảm học phí theo quy định [S2].\n    *   Trường hợp sinh viên xin nghỉ học, thôi học hoặc chuyển trường: được miễn 100% học phí nếu thực hiện trong hai tuần đầu của học kỳ chính; được giảm 50% nếu nộp trong đợt A; các trường hợp còn lại phải đóng 100% học phí [S2].\n\nSinh viên có thể tra cứu học phí trên Cổng thông tin sinh viên tại mục Dịch vụ, chọn Học phí - Công nợ [S1]. Nếu không hoàn thành nghĩa vụ học phí sau thời hạn quy định, sinh viên có thể bị xem xét đình chỉ đăng ký học tập ở kỳ tiếp theo [S3].",
+          "source_ids": [
+            "news/article_01::chunk-0000",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+            "news/article_01::chunk-0001",
+            "news/article_05::chunk-0000",
+            "news/article_02::chunk-0001"
+          ],
+          "metrics": {
+            "faithfulness": 0.8539325842696629,
+            "answer_relevance": 0.23762376237623764,
+            "context_recall": 1.0,
+            "context_precision": 1.0
+          },
+          "latency_ms": 7092.78
+        },
+        {
+          "question": "Xin nghỉ học trong hai tuần đầu học kỳ thì được giảm học phí bao nhiêu?",
+          "answer": "Sinh viên xin nghỉ học trong hai tuần đầu của học kỳ chính được miễn 100% học phí học kỳ [S1].",
+          "source_ids": [
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+            "news/article_01::chunk-0000",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0001",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003",
+            "news/article_01::chunk-0001"
+          ],
+          "metrics": {
+            "faithfulness": 0.9166666666666666,
+            "answer_relevance": 0.5882352941176471,
+            "context_recall": 1.0,
+            "context_precision": 0.8
+          },
+          "latency_ms": 4563.6
+        },
+        {
+          "question": "Thời gian nghỉ học dài hạn tối đa là bao nhiêu học kỳ?",
+          "answer": "Thời gian nghỉ học dài hạn tối đa là bốn học kỳ [S1].",
+          "source_ids": [
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0001",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003",
+            "news/article_04::chunk-0000",
+            "news/article_01::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.9,
+            "answer_relevance": 0.9473684210526316,
+            "context_recall": 1.0,
+            "context_precision": 0.6
+          },
+          "latency_ms": 3204.84
+        },
+        {
+          "question": "Sinh viên bị cảnh cáo học tập mức một được đăng ký tối đa bao nhiêu tín chỉ?",
+          "answer": "Sinh viên bị cảnh cáo học tập mức một được đăng ký tối đa 18 tín chỉ trong học kỳ chính [S1].",
+          "source_ids": [
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0001",
+            "news/article_01::chunk-0000",
+            "news/article_05::chunk-0000",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0000",
+            "news/article_03::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.9333333333333333,
+            "answer_relevance": 0.6363636363636364,
+            "context_recall": 1.0,
+            "context_precision": 1.0
+          },
+          "latency_ms": 3164.16
+        },
+        {
+          "question": "Điều kiện cần để xét học bổng khuyến khích học tập là gì?",
+          "answer": "Điều kiện cần để xét học bổng khuyến khích học tập bao gồm các yêu cầu sau:\n*   Không có học phần không đạt [S1].\n*   Đạt đủ số tín chỉ theo kế hoạch [S1].\n*   Điểm trung bình học kỳ và điểm trung bình tích lũy phải đạt từ loại khá trở lên [S1].\n\nNgoài ra, việc phân loại các học phần (trong hay ngoài chương trình đào tạo) cũng có thể ảnh hưởng đến việc xét học bổng khuyến khích học tập [S3].",
+          "source_ids": [
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003",
+            "news/article_01::chunk-0001",
+            "news/article_01::chunk-0000",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.7959183673469388,
+            "answer_relevance": 0.5797101449275363,
+            "context_recall": 0.8275862068965517,
+            "context_precision": 1.0
+          },
+          "latency_ms": 4561.36
+        },
+        {
+          "question": "Học bổng hỗ trợ học tập bán phần bằng bao nhiêu học bổng toàn phần?",
+          "answer": "Mức học bổng hỗ trợ học tập bán phần bằng 50 phần trăm học bổng toàn phần [S1], [S2].",
+          "source_ids": [
+            "legal/quy_dinh_hoc_bong_hust::chunk-0000",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003",
+            "news/article_04::chunk-0000",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002"
+          ],
+          "metrics": {
+            "faithfulness": 0.8461538461538461,
+            "answer_relevance": 0.631578947368421,
+            "context_recall": 1.0,
+            "context_precision": 1.0
+          },
+          "latency_ms": 4381.59
+        },
+        {
+          "question": "Sinh viên từ năm thứ hai cần CPA bao nhiêu để xét học bổng tài năng?",
+          "answer": "Để được xét học bổng tài năng, sinh viên từ năm thứ hai cần đạt CPA từ 3,4 trở lên [S1]. Ngoài ra, sinh viên cần tích lũy đủ số tín chỉ, không có học phần bị điểm F và có điểm rèn luyện trung bình từ 85 trở lên [S1].",
+          "source_ids": [
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+            "legal/so_tay_sinh_vien_hust::chunk-0000",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.696969696969697,
+            "answer_relevance": 0.2105263157894737,
+            "context_recall": 0.8947368421052632,
+            "context_precision": 1.0
+          },
+          "latency_ms": 5105.81
+        },
+        {
+          "question": "Sinh viên từ năm thứ hai nộp hồ sơ học bổng hỗ trợ học tập trước ngày nào?",
+          "answer": "Sinh viên từ năm thứ hai cần nộp hồ sơ đăng ký học bổng hỗ trợ học tập trước ngày 31 tháng 7 [S1]. Bên cạnh đó, sinh viên cần nộp giấy xác nhận hoàn cảnh kinh tế trước ngày 30 tháng 9 [S2].",
+          "source_ids": [
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+            "news/article_04::chunk-0000",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003"
+          ],
+          "metrics": {
+            "faithfulness": 0.8620689655172413,
+            "answer_relevance": 0.4878048780487806,
+            "context_recall": 0.875,
+            "context_precision": 1.0
+          },
+          "latency_ms": 3641.79
+        },
+        {
+          "question": "Sau năm thứ ba, CPA tối thiểu để duy trì học bổng hỗ trợ là bao nhiêu?",
+          "answer": "Sau năm thứ ba, CPA tối thiểu để duy trì học bổng hỗ trợ là 2,5 [S1].",
+          "source_ids": [
+            "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0001",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+            "news/article_04::chunk-0000",
+            "legal/so_tay_sinh_vien_hust::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.8571428571428571,
+            "answer_relevance": 0.35294117647058826,
+            "context_recall": 0.9411764705882353,
+            "context_precision": 1.0
+          },
+          "latency_ms": 4320.25
+        },
+        {
+          "question": "Hồ sơ học bổng hỗ trợ học tập cần giấy tờ gì?",
+          "answer": "Hồ sơ học bổng hỗ trợ học tập bao gồm các giấy tờ sau:\n\n*   Đơn đăng ký [S1].\n*   Minh chứng hộ nghèo, cận nghèo hoặc hoàn cảnh đặc biệt khó khăn có xác nhận của địa phương [S1].\n*   Giấy xác nhận hoàn cảnh kinh tế [S1].\n\nNgoài ra, sinh viên cần lưu ý nộp giấy xác nhận hoàn cảnh kinh tế trước ngày 30 tháng 9 [S1] và nộp hồ sơ đăng ký trước ngày 31 tháng 7 [S4].",
+          "source_ids": [
+            "legal/quy_dinh_hoc_bong_hust::chunk-0003",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0003",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0000",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0002",
+            "news/article_04::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.8,
+            "answer_relevance": 0.6440677966101694,
+            "context_recall": 0.8333333333333334,
+            "context_precision": 1.0
+          },
+          "latency_ms": 5916.37
+        },
+        {
+          "question": "Sinh viên tra cứu học phí và công nợ ở đâu?",
+          "answer": "Sinh viên tra cứu học phí và công nợ trên Cổng thông tin sinh viên [S1]. Cụ thể, sinh viên vào mục Dịch vụ và chọn phần Học phí - Công nợ [S1].",
+          "source_ids": [
+            "news/article_01::chunk-0000",
+            "news/article_01::chunk-0001",
+            "news/article_02::chunk-0001",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0001"
+          ],
+          "metrics": {
+            "faithfulness": 0.8823529411764706,
+            "answer_relevance": 0.8275862068965517,
+            "context_recall": 1.0,
+            "context_precision": 1.0
+          },
+          "latency_ms": 4439.28
+        },
+        {
+          "question": "Không hoàn thành học phí đúng hạn có thể dẫn tới hậu quả gì?",
+          "answer": "Việc không hoàn thành nghĩa vụ học phí đúng hạn có thể dẫn đến các hậu quả sau:\n\n*   Có thể ảnh hưởng đến học bổng khuyến khích học tập [S1].\n*   Sinh viên có thể bị xem xét đình chỉ đăng ký học tập ở kỳ tiếp theo [S1].",
+          "source_ids": [
+            "news/article_01::chunk-0001",
+            "news/article_03::chunk-0000",
+            "legal/quy_che_dao_tao_tin_chi_hust::chunk-0002",
+            "legal/so_tay_sinh_vien_hust::chunk-0002",
+            "legal/quy_dinh_hoc_bong_hust::chunk-0003"
+          ],
+          "metrics": {
+            "faithfulness": 0.9,
+            "answer_relevance": 0.5,
+            "context_recall": 1.0,
+            "context_precision": 1.0
+          },
+          "latency_ms": 22612.39
+        },
+        {
+          "question": "Sinh viên có thể xin xác nhận những loại giấy tờ nào?",
+          "answer": "Dựa trên các nguồn thông tin được cung cấp, sinh viên có thể xin xác nhận các loại giấy tờ và thủ tục hành chính sau:\n\n*   **Giấy chứng nhận sinh viên** [S1], [S2], [S3].\n*   **Giấy giới thiệu** [S1], [S2], [S3].\n*   **Bản sao bảng điểm** [S1], [S3].\n*   **Giấy vay vốn ngân hàng** [S1], [S2].\n*   **Sổ ưu đãi** [S2].\n*   **Giấy chứng nhận tạm thời khi mất thẻ** [S2].\n*   **Xác nhận vé tháng xe buýt** [S2].\n*   **Biên lai học phí** [S2].\n*   **Giấy chứng nhận tốt nghiệp** [S3].\n*   **Các xác nhận liên quan khác** [S1].\n\nMột số giấy tờ như giấy chứng nhận sinh viên, giấy giới thiệu, bản sao bảng điểm và giấy chứng nhận tốt nghiệp có thể được đăng ký thông qua hệ thống quản lý đào tạo [S3]. Sinh viên cần chuẩn bị đúng biểu mẫu, hồ sơ minh chứng và theo dõi lịch tiếp nhận, trả kết quả của đơn vị phụ trách [S2], [S5].",
+          "source_ids": [
+            "legal/so_tay_sinh_vien_hust::chunk-0001",
+            "news/article_02::chunk-0000",
+            "news/article_03::chunk-0000",
+            "news/article_01::chunk-0000",
+            "legal/so_tay_sinh_vien_hust::chunk-0004"
+          ],
+          "metrics": {
+            "faithfulness": 0.9113924050632911,
+            "answer_relevance": 0.3191489361702127,
+            "context_recall": 1.0,
+            "context_precision": 0.8
+          },
+          "latency_ms": 7007.56
+        },
+        {
+          "question": "Ban Công tác sinh viên hỗ trợ những nội dung nào?",
+          "answer": "Ban Công tác sinh viên thực hiện các nội dung hỗ trợ sau:\n\n*   **Chế độ chính sách và tài chính:** Thực hiện các chế độ chính sách, học bổng và hỗ trợ sinh viên [S1], [S2].\n*   **Sức khỏe và Bảo hiểm:** Triển khai các hoạt động bảo hiểm y tế và khám sức khỏe cho sinh viên [S1], [S2].\n*   **Học tập và Rèn luyện:** Hỗ trợ về điểm rèn luyện, hỗ trợ học tập và là đầu mối cho các thông tin về hoạt động xã hội [S1], [S2], [S4].\n*   **Nghề nghiệp và Kỹ năng:** Tư vấn, hỗ trợ về việc làm, thực tập, kỹ năng nghề nghiệp và kỹ năng sống [S1], [S2], [S4].\n*   **Thủ tục hành chính:** Giải quyết các thủ tục hành chính [S1], bao gồm việc cấp giấy giới thiệu cho sinh viên đăng ký Ký túc xá Pháp Vân khi được yêu cầu [S3].\n*   **Tư vấn và Quản lý:** Tham mưu và hỗ trợ công tác quản lý người học; tư vấn và tạo điều kiện cho sinh viên, đặc biệt là những người học có hoàn cảnh khó khăn hoặc hoàn cảnh đặc biệt [S2].\n*   **Môi trường văn hóa:** Phối hợp xây dựng môi trường văn hóa trong nhà trường [S2].",
+          "source_ids": [
+            "legal/so_tay_sinh_vien_hust::chunk-0000",
+            "news/article_04::chunk-0000",
+            "news/article_05::chunk-0000",
+            "news/article_04::chunk-0001",
+            "news/article_05::chunk-0001"
+          ],
+          "metrics": {
+            "faithfulness": 0.9069767441860465,
+            "answer_relevance": 0.3925233644859813,
+            "context_recall": 1.0,
+            "context_precision": 0.6
+          },
+          "latency_ms": 24008.15
+        },
+        {
+          "question": "Tân sinh viên cần làm gì để tránh lừa đảo khi đăng ký ký túc xá?",
+          "answer": "Để tránh lừa đảo khi đăng ký ký túc xá, tân sinh viên cần lưu ý các nội dung sau:\n\n*   **Thời điểm và phương thức đăng ký:** Sinh viên chỉ thực hiện đăng ký sau thời điểm nhà trường có thông báo chính thức qua hệ thống của ký túc xá [S1]. Sinh viên cần theo dõi các thông báo này và thực hiện đăng ký trên cổng thông tin ký túc xá, sau đó hoàn thiện hồ sơ theo hướng dẫn [S4].\n*   **Địa chỉ liên hệ tin cậy:** Sinh viên có thể liên hệ trực tiếp với Trung tâm Dịch vụ và Hỗ trợ Bách khoa tại khuôn viên trường để được hỗ trợ thông tin [S1].\n*   **Quy định riêng với Ký túc xá Pháp Vân:** Sinh viên cần làm theo hướng dẫn và lấy giấy giới thiệu từ Ban Công tác sinh viên khi được yêu cầu [S1].\n*   **Bảo mật thông tin cá nhân:** Sinh viên cần tự bảo vệ tài khoản cá nhân, không cung cấp mật khẩu hoặc mã xác thực cho người khác để đảm bảo an toàn khi sử dụng các hệ thống thông tin của trường [S4].",
+          "source_ids": [
+            "news/article_05::chunk-0000",
+            "news/article_03::chunk-0000",
+            "news/article_01::chunk-0000",
+            "legal/so_tay_sinh_vien_hust::chunk-0002",
+            "news/article_04::chunk-0000"
+          ],
+          "metrics": {
+            "faithfulness": 0.8241758241758241,
+            "answer_relevance": 0.3185840707964602,
+            "context_recall": 0.8518518518518519,
+            "context_precision": 1.0
+          },
+          "latency_ms": 7020.99
+        }
+      ]
+    },
+    "conclusion": "gemini / gemini-3-flash-preview thay đổi điểm trung bình +0.025 và answer relevance +0.185 so với extractive trên cùng retrieval hybrid + RRF."
+  }
+}

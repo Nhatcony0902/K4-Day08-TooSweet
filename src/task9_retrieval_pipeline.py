@@ -19,6 +19,7 @@ from .task5_semantic_search import semantic_search
 from .task6_lexical_search import lexical_search
 from .task7_reranking import rerank_rrf
 from .task8_pageindex_vectorless import pageindex_search
+from .bge_reranking import RERANKER, rerank_bge
 
 
 load_dotenv()
@@ -39,7 +40,11 @@ def retrieve(
     candidate_k = max(top_k * 2, top_k)
     dense = semantic_search(query, top_k=candidate_k)
     sparse = lexical_search(query, top_k=candidate_k)
-    hybrid = rerank_rrf([dense, sparse], top_k=top_k) if use_reranking else dense[:top_k]
+    if use_reranking and RERANKER == "bge":
+        fused = rerank_rrf([dense, sparse], top_k=candidate_k)
+        hybrid = rerank_bge(query, fused, top_k=top_k)
+    else:
+        hybrid = rerank_rrf([dense, sparse], top_k=top_k) if use_reranking else dense[:top_k]
 
     best_dense_score = float(dense[0]["score"]) if dense else 0.0
     if best_dense_score < score_threshold:

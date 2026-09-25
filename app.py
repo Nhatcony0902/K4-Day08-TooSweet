@@ -1,6 +1,7 @@
 import streamlit as st
 
 from src.config import load_dotenv
+from src.conversation_memory import condense_query
 from src.task10_generation import generate_with_citation
 
 
@@ -19,6 +20,7 @@ with st.sidebar:
     st.title("Trợ lý sinh viên HUST")
     st.caption("Tra cứu quy chế đào tạo, học phí, học bổng và dịch vụ sinh viên.")
     top_k = st.slider("Số chunks", 3, 10, 5)
+    use_memory = st.toggle("Nhớ ngữ cảnh hội thoại", value=True)
     if st.button("Xóa hội thoại"):
         st.session_state.messages = []
         st.rerun()
@@ -44,11 +46,17 @@ def render_sources(sources: list[dict], retrieval_source: str) -> None:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
+        if message.get("standalone_query"):
+            st.caption(f"Câu hỏi đã hiểu: {message['standalone_query']}")
         render_sources(message.get("sources", []), message.get("retrieval_source", "none"))
 
 query = st.chat_input("Nhập câu hỏi...")
 
 if query:
+    history = [
+        {"role": message["role"], "content": message["content"]}
+        for message in st.session_state.messages
+    ]
     st.session_state.messages.append({"role": "user", "content": query})
 
     with st.chat_message("user"):
@@ -56,8 +64,11 @@ if query:
 
     with st.chat_message("assistant"):
         with st.spinner("Đang tìm trong tài liệu…"):
-            result = generate_with_citation(query, top_k)
+            standalone_query = condense_query(query, history) if use_memory else query
+            result = generate_with_citation(standalone_query, top_k)
         st.markdown(result["answer"])
+        if standalone_query != query:
+            st.caption(f"Câu hỏi đã hiểu: {standalone_query}")
         render_sources(result["sources"], result["retrieval_source"])
 
     st.session_state.messages.append({
@@ -65,4 +76,5 @@ if query:
         "content": result["answer"],
         "sources": result["sources"],
         "retrieval_source": result["retrieval_source"],
+        "standalone_query": standalone_query if standalone_query != query else None,
     })

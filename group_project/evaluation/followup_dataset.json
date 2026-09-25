@@ -1,0 +1,50 @@
+[
+  {
+    "history": [
+      "Học bổng hỗ trợ học tập bán phần bằng bao nhiêu học bổng toàn phần?"
+    ],
+    "question": "Còn hồ sơ thì cần những giấy tờ gì?",
+    "expected_context": "Hồ sơ học bổng hỗ trợ gồm đơn đăng ký và minh chứng hoàn cảnh kinh tế có xác nhận của địa phương.",
+    "source": "quy_dinh_hoc_bong_hust.pdf"
+  },
+  {
+    "history": [
+      "Học bổng hỗ trợ học tập bán phần bằng bao nhiêu học bổng toàn phần?"
+    ],
+    "question": "Vậy năm hai nộp hồ sơ trước ngày nào?",
+    "expected_context": "Hồ sơ đăng ký nộp trước ngày 31 tháng 7; danh sách được công bố trước ngày 30 tháng 10.",
+    "source": "quy_dinh_hoc_bong_hust.pdf"
+  },
+  {
+    "history": [
+      "Sinh viên tra cứu học phí và công nợ ở đâu?"
+    ],
+    "question": "Nếu đóng muộn thì sao?",
+    "expected_context": "Người không hoàn thành nghĩa vụ học phí sau hạn có thể bị xem xét đình chỉ đăng ký học tập ở kỳ tiếp theo.",
+    "source": "article_01.json"
+  },
+  {
+    "history": [
+      "Thời gian nghỉ học dài hạn tối đa là bao nhiêu học kỳ?"
+    ],
+    "question": "Còn nghỉ trong hai tuần đầu thì được miễn bao nhiêu?",
+    "expected_context": "Sinh viên xin nghỉ học, thôi học hoặc chuyển trường trong hai tuần đầu của học kỳ chính được miễn 100 phần trăm học phí học kỳ.",
+    "source": "quy_che_dao_tao_tin_chi_hust.pdf"
+  },
+  {
+    "history": [
+      "Điều kiện cần để xét học bổng khuyến khích học tập là gì?"
+    ],
+    "question": "Còn loại tài năng thì cần CPA bao nhiêu?",
+    "expected_context": "Sinh viên từ năm thứ hai cần tích lũy đủ tín chỉ, không có học phần điểm F, CPA từ 3,4 và điểm rèn luyện trung bình từ 85.",
+    "source": "quy_dinh_hoc_bong_hust.pdf"
+  },
+  {
+    "history": [
+      "Ban Công tác sinh viên hỗ trợ những nội dung nào?"
+    ],
+    "question": "Có xác nhận giấy tờ không?",
+    "expected_context": "Các thủ tục gồm sổ ưu đãi, giấy chứng nhận sinh viên, giấy chứng nhận tạm thời, vé tháng xe buýt, giấy giới thiệu, giấy vay vốn và biên lai học phí.",
+    "source": "article_02.json"
+  }
+]
