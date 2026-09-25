@@ -8,7 +8,7 @@ RetrievalSource = Literal["hybrid", "pageindex", "none"]
 class DocumentMetadata(TypedDict):
     source: str
     title: str
-    doc_type: str
+    doc_type: Literal["legal", "news"]
     url: str | None
 
 
@@ -61,6 +61,8 @@ def validate_document(item: object, *, require_chunk: bool = False) -> None:
     for key in ("source", "title", "doc_type"):
         if not isinstance(metadata.get(key), str) or not metadata[key].strip():
             raise ValueError(f"metadata.{key} must be a non-empty string")
+    if metadata["doc_type"] not in {"legal", "news"}:
+        raise ValueError("metadata.doc_type must be legal or news")
     if "url" not in metadata or not (
         metadata["url"] is None or isinstance(metadata["url"], str)
     ):

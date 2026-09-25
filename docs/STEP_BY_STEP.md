@@ -10,7 +10,6 @@
 python -m venv .venv
 source .venv/bin/activate       # Windows: .venv\Scripts\activate
 python -m pip install -e ".[dev]"
-python -m playwright install chromium
 cp .env.example .env
 ```
 
@@ -25,7 +24,7 @@ python -m src.task1_collect_legal_docs
 python -m src.task2_crawl_news
 ```
 
-Trong repo có setup sẵn Crawl4AI, các bạn tùy ý sử dụng công cụ khác của mình
+Implementation mặc định dùng HTTP parser nhẹ và tạo source snapshot khi host không phản hồi. Nếu muốn dùng Crawl4AI, cài extra `pip install -e ".[crawl]"` và Playwright browser riêng.
 
 ## 4. Chuẩn hóa Markdown
 
@@ -101,6 +100,6 @@ pytest tests/test_acceptance.py -q
 pytest -q
 ```
 
-- Mỗi thành viên hoàn thiện individual report.
+- Mỗi thành viên hoàn thiện individual report trong `reports/`.
 - Kiểm tra repository không chứa `.env`, API key hoặc file cache.
 - Demo một query đúng, một query ngoài domain và kết quả A/B.

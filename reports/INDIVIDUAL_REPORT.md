@@ -1,10 +1,23 @@
 # Individual contribution report
 
+**Tên nhóm:** TooSweet
+
+**Repository:** `K4-DAY08-TooSweet`
+
 Mỗi thành viên copy template này thành:
 
 ```text
 reports/<student-id>-<short-name>.md
 ```
+
+Các bản nháp hiện có:
+
+- `reports/K4-L3B-2A202602449-LeThanhTinh.md`
+- `reports/K4-L3B-2A202602378-NguyenTienLuong.md`
+- `reports/K4-L3B-2A202602768-TranXuanDuc.md`
+- `reports/K4-L3B-2A202602844-PhamLongNhat.md`
+
+Các file báo cáo đã được đặt tên theo mã học viên và họ tên của từng thành viên.
 
 Giới hạn khuyến nghị: 1 trang, không chép lại README hoặc mô tả lý thuyết chung. Báo cáo không phải một bài pipeline cá nhân; mục đích là ghi nhận ownership và bằng chứng đóng góp trong sản phẩm nhóm.
 
@@ -14,8 +27,8 @@ Giới hạn khuyến nghị: 1 trang, không chép lại README hoặc mô tả
 
 - Họ và tên:
 - Mã học viên:
-- Nhóm:
-- Repository/branch:
+- Nhóm: TooSweet
+- Repository/branch: `K4-DAY08-TooSweet`, `main`
 
 ## Phần việc đã thực hiện
 

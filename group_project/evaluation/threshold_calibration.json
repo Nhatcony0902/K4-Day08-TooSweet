@@ -1,0 +1,73 @@
+{
+  "embedding": "hashing-1024",
+  "recommended_threshold": 0.4115,
+  "balanced_accuracy": 0.9375,
+  "in_domain": [
+    {
+      "query": "Học phí được tính theo tín chỉ như thế nào?",
+      "score": 0.5212187573571558
+    },
+    {
+      "query": "Điều kiện nhận học bổng tài năng là gì?",
+      "score": 0.5560909834876188
+    },
+    {
+      "query": "Thời gian nghỉ học dài hạn tối đa bao lâu?",
+      "score": 0.4141692128396458
+    },
+    {
+      "query": "Xin giấy chứng nhận sinh viên ở đâu?",
+      "score": 0.5269802003087651
+    },
+    {
+      "query": "Cách đăng ký ký túc xá an toàn?",
+      "score": 0.3780893637112356
+    },
+    {
+      "query": "Sinh viên có bắt buộc mua bảo hiểm y tế không?",
+      "score": 0.47627716772045436
+    },
+    {
+      "query": "CPA để duy trì học bổng hỗ trợ là bao nhiêu?",
+      "score": 0.5000050337681952
+    },
+    {
+      "query": "Tra cứu công nợ học phí ở đâu?",
+      "score": 0.4916319531937793
+    }
+  ],
+  "out_of_domain": [
+    {
+      "query": "Dự báo thời tiết ngày mai ở Đà Nẵng",
+      "score": 0.24088082546387135
+    },
+    {
+      "query": "Giá Bitcoin hôm nay là bao nhiêu",
+      "score": 0.247687515159296
+    },
+    {
+      "query": "Cách nấu phở bò",
+      "score": 0.1231880712146538
+    },
+    {
+      "query": "Ai là tổng thống Pháp",
+      "score": 0.3943159149689809
+    },
+    {
+      "query": "Viết chương trình sắp xếp bằng Rust",
+      "score": 0.34343550550577007
+    },
+    {
+      "query": "Tư vấn mua cổ phiếu ngân hàng",
+      "score": 0.25777554319293816
+    },
+    {
+      "query": "Lịch thi đấu bóng đá Ngoại hạng Anh",
+      "score": 0.37266245634518613
+    },
+    {
+      "query": "Triệu chứng đau ngực cần dùng thuốc gì",
+      "score": 0.40874213195266784
+    }
+  ]
+}

@@ -1,8 +1,21 @@
-# Day 8 — RAG Pipeline
+# Trợ lý dịch vụ sinh viên HUST — RAG Pipeline
+
+**Tên nhóm:** TooSweet
+
+**Repository:** `K4-DAY08-TooSweet`
 
 ## Mục tiêu
 
-Mỗi nhóm xây dựng một chatbot RAG trả lời câu hỏi từ bộ tài liệu do nhóm thu thập. Sản phẩm phải có hybrid retrieval, citation, giao diện chat và báo cáo đánh giá.
+Chatbot RAG trả lời câu hỏi về quy chế đào tạo, học phí, học bổng, thủ tục và dịch vụ sinh viên Đại học Bách khoa Hà Nội. Pipeline có dense retrieval, BM25, RRF, PageIndex fallback, citation, giao diện Streamlit và evaluation A/B.
+
+## Thành viên
+
+- Lê Thanh Tình — `2A202602449` — Trưởng nhóm (Lead)
+- Nguyễn Tiến Lượng — `2A202602378`
+- Trần Xuân Đức — `2A202602768`
+- Phạm Long Nhật — `2A202602844`
+
+Phân công ownership và báo cáo cá nhân nằm trong thư mục `reports/`.
 
 Nhóm tự chọn bài toán và thu thập dữ liệu phù hợp; repo không cung cấp dữ liệu mẫu.
 
@@ -14,7 +27,7 @@ Nhóm tự chọn bài toán và thu thập dữ liệu phù hợp; repo không 
 - Chatbot Streamlit hiển thị câu trả lời và nguồn đã dùng.
 - Golden dataset tối thiểu 15 câu; đánh giá 4 metric và so sánh A/B.
 - `group_project/evaluation/RESULT.md`.
-- Mỗi thành viên nộp báo cáo cá nhân theo template trong `group_project/ịndividual/INDIVIDUAL_REPORT.md`.
+- Mỗi thành viên nộp báo cáo cá nhân theo template trong `reports/INDIVIDUAL_REPORT.md`.
 
 ## Quick start
 
@@ -23,11 +36,16 @@ python -m venv .venv
 source .venv/bin/activate       # Windows: .venv\Scripts\activate
 python -m pip install --upgrade pip setuptools wheel
 python -m pip install -e ".[dev]"
-python -m playwright install chromium
-cp .env.example .env
+cp .env.example .env            # Windows PowerShell: Copy-Item .env.example .env
 ```
 
-Điền API key cần dùng trong `.env`; không commit file này.
+Mặc định project dùng embedding hashing và extractive generation để chạy offline. Muốn dùng câu trả lời tự nhiên hơn, đổi `LLM_PROVIDER` sang `gemini`, `openai` hoặc `anthropic` và điền API key tương ứng. Không commit `.env`.
+
+Các backend nặng được tách thành extras để setup cơ bản không phải tải browser/model không dùng đến:
+
+```bash
+pip install -e ".[providers,vector,local-embedding,conversion,evaluation,crawl]"
+```
 
 ```bash
 # 1. Thu thập và chuẩn hoá
@@ -41,7 +59,24 @@ pytest -q
 
 # 3. Chạy sản phẩm
 streamlit run app.py
+
+# 4. Chạy lại A/B evaluation và sinh báo cáo
+python -m src.calibrate_threshold
+python -m src.evaluate
 ```
+
+`src.evaluate` là evaluator offline, deterministic. Để chạy bốn metric bằng Ragas + Gemini (có phát sinh API calls), cài `.[evaluation,providers]`, cấu hình `GEMINI_API_KEY`, rồi chạy `python -m src.evaluate_ragas`.
+
+Nếu host nguồn tạm thời không truy cập được, Task 1–2 tạo source snapshot có URL gốc để pipeline và bài demo vẫn tái lập được. Khi có mạng, chạy lại hai task để làm mới dữ liệu.
+
+## Kiến trúc
+
+1. Task 1–3 thu thập PDF/page và chuẩn hóa về Markdown có frontmatter.
+2. Task 4 chunk, embedding và upsert. ChromaDB được dùng khi đã cài; JSON cosine store là backend offline dự phòng.
+3. Task 5–7 chạy dense, BM25 và Reciprocal Rank Fusion trên cùng corpus.
+4. Task 8–9 thử PageIndex khi dense score dưới threshold; lỗi provider tự hạ cấp về hybrid.
+5. Task 10 reorder context, gọi provider đã chọn và trả `GenerationResult` có nguồn.
+6. `src.evaluate` so sánh dense-only với hybrid + RRF trên 15 golden cases.
 
 ## Lộ trình 3 giờ
 
@@ -67,7 +102,9 @@ streamlit run app.py
 - [Module contracts](docs/MODULE_CONTRACTS.md): schema, interface và invariant mà code/test nên tuân theo.
 - [Step-by-step guide](docs/STEP_BY_STEP.md): thứ tự triển khai và tiêu chí hoàn thành từng bước.
 - [Grading rubric](docs/GRADING_RUBRIC.md): Rubric thang điểm.
-- [Individual report](group_project/ịndividual/INDIVIDUAL_REPORT.md): template báo cáo cá nhân.
+- [Individual report](reports/INDIVIDUAL_REPORT.md): template báo cáo cá nhân.
+- [Evaluation result](group_project/evaluation/RESULT.md): kết quả A/B đã chạy.
+- [Data sources](data/SOURCES.md): nguồn gốc và phạm vi corpus.
 - [Suggested topics](docs/SUGGESTED_TOPICS.md): danh sách chủ đề tham khảo, không bắt buộc.
 
 ## Kiểm tra

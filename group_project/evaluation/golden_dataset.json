@@ -1,0 +1,92 @@
+[
+  {
+    "question": "Học phí của sinh viên được tính như thế nào?",
+    "expected_answer": "Học phí được tính theo tổng số tín chỉ học phí của các học phần đăng ký thành công trong học kỳ.",
+    "expected_context": "Học phí được tính theo tổng số tín chỉ học phí của các học phần đăng ký thành công.",
+    "source": "quy_che_dao_tao_tin_chi_hust.pdf"
+  },
+  {
+    "question": "Xin nghỉ học trong hai tuần đầu học kỳ thì được giảm học phí bao nhiêu?",
+    "expected_answer": "Sinh viên được miễn 100% học phí của học kỳ.",
+    "expected_context": "Sinh viên xin nghỉ học, thôi học hoặc chuyển trường trong hai tuần đầu của học kỳ chính được miễn 100 phần trăm học phí học kỳ.",
+    "source": "quy_che_dao_tao_tin_chi_hust.pdf"
+  },
+  {
+    "question": "Thời gian nghỉ học dài hạn tối đa là bao nhiêu học kỳ?",
+    "expected_answer": "Thời gian nghỉ học dài hạn tối đa là bốn học kỳ.",
+    "expected_context": "Nghỉ học dài hạn tối đa bốn học kỳ.",
+    "source": "quy_che_dao_tao_tin_chi_hust.pdf"
+  },
+  {
+    "question": "Sinh viên bị cảnh cáo học tập mức một được đăng ký tối đa bao nhiêu tín chỉ?",
+    "expected_answer": "Tối đa 18 tín chỉ trong một học kỳ chính.",
+    "expected_context": "Sinh viên bị cảnh cáo mức một được đăng ký tối đa 18 tín chỉ và tối thiểu 10 tín chỉ trong học kỳ chính.",
+    "source": "quy_che_dao_tao_tin_chi_hust.pdf"
+  },
+  {
+    "question": "Điều kiện cần để xét học bổng khuyến khích học tập là gì?",
+    "expected_answer": "Không có học phần không đạt, đủ số tín chỉ theo kế hoạch, điểm trung bình học kỳ và tích lũy từ loại khá trở lên.",
+    "expected_context": "Điều kiện cần để xét học bổng khuyến khích là không có học phần không đạt, đạt đủ số tín chỉ theo kế hoạch và điểm trung bình học kỳ cùng điểm trung bình tích lũy từ loại khá trở lên.",
+    "source": "quy_che_dao_tao_tin_chi_hust.pdf"
+  },
+  {
+    "question": "Học bổng hỗ trợ học tập bán phần bằng bao nhiêu học bổng toàn phần?",
+    "expected_answer": "Học bổng bán phần bằng 50% học bổng toàn phần.",
+    "expected_context": "Học bổng hỗ trợ học tập gồm toàn phần và bán phần; mức bán phần bằng 50 phần trăm toàn phần.",
+    "source": "quy_dinh_hoc_bong_hust.pdf"
+  },
+  {
+    "question": "Sinh viên từ năm thứ hai cần CPA bao nhiêu để xét học bổng tài năng?",
+    "expected_answer": "CPA phải từ 3,4 trở lên.",
+    "expected_context": "Sinh viên từ năm thứ hai cần tích lũy đủ tín chỉ, không có học phần điểm F, CPA từ 3,4 và điểm rèn luyện trung bình từ 85.",
+    "source": "quy_dinh_hoc_bong_hust.pdf"
+  },
+  {
+    "question": "Sinh viên từ năm thứ hai nộp hồ sơ học bổng hỗ trợ học tập trước ngày nào?",
+    "expected_answer": "Hồ sơ đăng ký phải nộp trước ngày 31 tháng 7 hằng năm.",
+    "expected_context": "Hồ sơ đăng ký nộp trước ngày 31 tháng 7; danh sách được công bố trước ngày 30 tháng 10.",
+    "source": "quy_dinh_hoc_bong_hust.pdf"
+  },
+  {
+    "question": "Sau năm thứ ba, CPA tối thiểu để duy trì học bổng hỗ trợ là bao nhiêu?",
+    "expected_answer": "CPA tối thiểu là 2,5.",
+    "expected_context": "Để duy trì học bổng hỗ trợ, CPA tối thiểu là 2,0 sau năm thứ nhất, 2,25 sau năm thứ hai, và 2,5 từ sau năm thứ ba.",
+    "source": "quy_dinh_hoc_bong_hust.pdf"
+  },
+  {
+    "question": "Hồ sơ học bổng hỗ trợ học tập cần giấy tờ gì?",
+    "expected_answer": "Cần đơn đăng ký và minh chứng hộ nghèo, cận nghèo hoặc hoàn cảnh đặc biệt khó khăn có xác nhận của địa phương.",
+    "expected_context": "Hồ sơ học bổng hỗ trợ gồm đơn đăng ký và minh chứng hoàn cảnh kinh tế có xác nhận của địa phương.",
+    "source": "quy_dinh_hoc_bong_hust.pdf"
+  },
+  {
+    "question": "Sinh viên tra cứu học phí và công nợ ở đâu?",
+    "expected_answer": "Tra cứu trên Cổng thông tin sinh viên, trong mục Dịch vụ, phần Học phí - Công nợ.",
+    "expected_context": "Sinh viên tra cứu học phí trên Cổng thông tin sinh viên, vào mục Dịch vụ và chọn Học phí - Công nợ.",
+    "source": "article_01.json"
+  },
+  {
+    "question": "Không hoàn thành học phí đúng hạn có thể dẫn tới hậu quả gì?",
+    "expected_answer": "Sinh viên có thể bị xem xét đình chỉ đăng ký học tập ở kỳ tiếp theo.",
+    "expected_context": "Người không hoàn thành nghĩa vụ học phí sau hạn có thể bị xem xét đình chỉ đăng ký học tập ở kỳ tiếp theo.",
+    "source": "article_01.json"
+  },
+  {
+    "question": "Sinh viên có thể xin xác nhận những loại giấy tờ nào?",
+    "expected_answer": "Có thể xin giấy chứng nhận sinh viên, giấy giới thiệu, giấy vay vốn, biên lai học phí và các giấy tờ liên quan.",
+    "expected_context": "Các thủ tục gồm sổ ưu đãi, giấy chứng nhận sinh viên, giấy chứng nhận tạm thời, vé tháng xe buýt, giấy giới thiệu, giấy vay vốn và biên lai học phí.",
+    "source": "article_02.json"
+  },
+  {
+    "question": "Ban Công tác sinh viên hỗ trợ những nội dung nào?",
+    "expected_answer": "Ban hỗ trợ bảo hiểm y tế, khám sức khỏe, chế độ chính sách, học bổng, hoạt động xã hội, việc làm và rèn luyện.",
+    "expected_context": "Ban triển khai bảo hiểm y tế, khám sức khỏe, chế độ chính sách, học bổng và hỗ trợ sinh viên.",
+    "source": "article_04.json"
+  },
+  {
+    "question": "Tân sinh viên cần làm gì để tránh lừa đảo khi đăng ký ký túc xá?",
+    "expected_answer": "Chỉ đăng ký qua hệ thống chính thức, không chuyển tiền vào tài khoản cá nhân và không cung cấp mật khẩu hoặc OTP.",
+    "expected_context": "Sinh viên chỉ đăng ký qua hệ thống chính thức, không chuyển tiền qua tài khoản cá nhân, cung cấp mật khẩu, mã OTP hoặc truy cập liên kết không xác minh.",
+    "source": "article_05.json"
+  }
+]
